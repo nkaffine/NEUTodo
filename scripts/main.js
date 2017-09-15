@@ -5,7 +5,7 @@
 function postFbInfo(userId, sessionId, first, last, email) {
     method = "post";
 
-    // The rest of this code assumes you are not using a library.
+    // The rest of this code assumes you are not using a libraries.
     // It can be made less wordy if you use one.
     form = document.getElementById("fbinfo");
     form.setAttribute("method", method);

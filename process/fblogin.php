@@ -6,6 +6,7 @@
  * Time: 10:21 PM
  */
     require_once('../db.php');
+    require_once('../libraries/functions.php');
     if(!($connection = @ mysqli_connect($DB_hostname, $DB_username, $DB_password, $DB_databasename))){
         error("1-1-1");
     }

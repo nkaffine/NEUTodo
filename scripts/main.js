@@ -69,7 +69,7 @@ $(document).ready(function(){
     });
 });
 
-src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js";
 
 function downloadUrl(url, callback) {
     var request = window.ActiveXObject ?
@@ -89,7 +89,9 @@ function downloadUrl(url, callback) {
 
 function doNothing(){}
 
-
+function error(message){
+    window.location = "/error.php?message=" + encodeURIComponent(message);
+}
 
 
 

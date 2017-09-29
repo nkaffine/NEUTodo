@@ -32,3 +32,6 @@ body:after {
     padding-left: 0;
     padding-right: 0;
 }
+.lists {
+    margin-bottom: 0;
+}

@@ -36,10 +36,10 @@
         if(mysqli_affected_rows($connection) == -1){
             throw new Exception("3-7-4");
         }
-        $array['result'] = 1;
+        $array['results'] = array('name'=>$list_name, 'id'=>$list_id, 'color'=>'#000000');
         $array['error'] = null;
     } catch (Exception $exception){
-        $array['result'] = 0;
+        $array['results'] = 0;
         $array['error'] = $exception->getMessage();
     }
     echo json_encode($array);

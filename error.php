@@ -6,7 +6,7 @@
  * Time: 10:35 PM
  */
     require_once('db.php');
-    require_once('../libraries/utils.php');
+    require_once('libraries/utils.php');
     if(count($_GET)){
         $message = validInputSizeAlpha($_GET['message'], 1000000);
     }

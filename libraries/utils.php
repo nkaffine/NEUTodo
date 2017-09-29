@@ -31,6 +31,7 @@
     }
 
     // Checks if the user is logged in, if they are not, send them to the home page
+    // returns the user id
     function logincheck($page1, $page2) {
         global $connection;
         session_start();
@@ -420,5 +421,35 @@
         }
 
         return $year.'-'.$month.'-'.$day." 00:00:00";
+    }
+
+    // Checks if the user is logged in, if they are not, send them to the home page
+    // returns the user id
+    function apiLoginCheck($page1, $page2) {
+        global $connection;
+        session_start();
+        if(empty($_SESSION['id'])){
+            // redirect them to the login page
+            $message = "Please login";
+            header("Location: index.php?message=" . urlencode($message));
+            exit;
+        }
+        if($_SESSION['key'] != $_COOKIE['sessionId']){
+            $message = "Please login";
+            setcookie('sessionId', 'blah', time() - (86400 * 30), "/");
+            session_destroy();
+            header("Location: index.php?message=" . urlencode($message));
+        }
+        $id = $_SESSION['id'];
+        $query = "select user_id from users where facebook_id = {$id}";
+        if(($result = mysqli_query($connection, $query))==FALSE){
+            throw new Exception($page1 . "-3");
+        }
+        if(notUnique($result)){
+            throw new Exception($page2."-4");
+        }
+        $row = mysqli_fetch_array($result);
+        $user_id = $row['user_id'];
+        return $user_id;
     }
 ?>
